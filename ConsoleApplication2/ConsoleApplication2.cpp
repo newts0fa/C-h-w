@@ -4,9 +4,9 @@
 using namespace std;
 int main()
 {
-	int s;
-	int x;
-	int y;
+	float s;
+	float x;
+	float y;
 	cin >> x;
 	cin >> y;
 	double result;
