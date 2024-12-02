@@ -1,0 +1,45 @@
+#include <SFML/Graphics.hpp>
+
+int main() {
+    // Создаем окно размером 500x500 пикселей
+    sf::RenderWindow window(sf::VideoMode(500, 500), "Grid with Diagonals");
+
+    // Размер клеток сетки
+    int gridSize = 10;
+    int cellSize = 500 / gridSize;
+
+    // Основной цикл программы
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+
+        // Очистка экрана (заполнение черным цветом)
+        window.clear(sf::Color::Black);
+
+        // Рисуем сетку
+        for (int i = 0; i < gridSize; ++i) {
+            for (int j = 0; j < gridSize; ++j) {
+                sf::RectangleShape cell(sf::Vector2f(cellSize, cellSize));
+                cell.setPosition(i * cellSize, j * cellSize);
+
+                // Закрашиваем клетки на главной и побочной диагоналях
+                if (i == j || i + j == gridSize - 1) {
+                    cell.setFillColor(sf::Color::Green);
+                }
+                else {
+                    cell.setFillColor(sf::Color::White);
+                }
+
+                window.draw(cell);
+            }
+        }
+
+        window.display();
+    }
+
+    return 0;
+}
