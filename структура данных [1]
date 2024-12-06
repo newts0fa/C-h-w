@@ -1,0 +1,42 @@
+#include <iostream>
+#include <algorithm> // Для функции count_if
+// Функция для подсчета положительных элементов в массиве
+int countPositive(int arr[], int size) {
+    return std::count_if(arr, arr + size, [](int x) { return x > 0; });
+}
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    int A[5] = {-3,9,6,-2,1 };  // Пример массива A
+    int B[5] = {-5,2,-4,7,0}; // Пример массива B
+
+    int posA = countPositive(A, 5);  // Подсчет положительных в A
+    int posB = countPositive(B, 5);  // Подсчет положительных в B
+
+    std::cout << "Массив A: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << A[i] << " ";
+    }
+    std::cout << "\nМассив B: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << B[i] << " ";
+    }
+
+    std::cout << "\n\n";
+
+    // Выводим массив с наименьшим количеством положительных элементов
+    if (posA < posB) {
+        std::cout << "Массив с наименьшим количеством положительных элементов: A\n";
+        for (int i = 0; i < 5; ++i) {
+            std::cout << A[i] << " ";
+        }
+    }
+    else {
+        std::cout << "Массив с наименьшим количеством положительных элементов: B\n";
+        for (int i = 0; i < 5; ++i) {
+            std::cout << B[i] << " ";
+        }
+    }
+
+    return 0;
+}
